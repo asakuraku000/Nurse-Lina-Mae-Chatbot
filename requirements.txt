@@ -1,4 +1,4 @@
 flask==2.0.1
 tensorflow
-numpy==1.21.2
-scikit-learn==0.24.2
+numpy
+scikit-learn
