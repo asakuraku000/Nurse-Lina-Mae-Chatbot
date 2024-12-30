@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurse Lina Mae - Medical Chatbot</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .chat-container {
+            height: calc(100vh - 200px);
+        }
+        .messages {
+            height: calc(100% - 60px);
+        }
+        .message {
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background-color: #e3f2fd;
+        }
+        .bot-message {
+            background-color: #f3e5f5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h1 class="text-2xl font-bold text-center mb-4 text-purple-700">
+                Chat with Nurse Lina Mae
+            </h1>
+            <div class="chat-container flex flex-col">
+                <div class="messages flex-1 overflow-y-auto mb-4 p-4" id="chat-messages">
+                    <div class="bot-message message rounded-lg p-3 mb-4 ml-2">
+                        Hello! I'm Nurse Lina Mae. How can I assist you with your health questions today?
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <input type="text" id="message-input" 
+                           class="flex-1 p-3 border rounded-l focus:outline-none focus:ring-2 focus:ring-purple-500"
+                           placeholder="Type your message here..."
+                           onkeypress="if(event.key === 'Enter') sendMessage()">
+                    <button onclick="sendMessage()" 
+                            class="bg-purple-600 text-white px-6 py-3 rounded-r hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function appendMessage(message, isUser) {
+            const messagesDiv = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message ml-auto' : 'bot-message'} rounded-lg p-3 mb-4 ${isUser ? 'mr-2' : 'ml-2'}`;
+            messageDiv.textContent = message;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Clear input
+            input.value = '';
+            
+            // Add user message to chat
+            appendMessage(message, true);
+            
+            try {
+                // Send message to server
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    appendMessage('Sorry, I encountered an error. Please try again.', false);
+                } else {
+                    appendMessage(data.response, false);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('Sorry, I encountered an error. Please try again.', false);
+            }
+        }
+
+        // Focus input on load
+        document.getElementById('message-input').focus();
+    </script>
+</body>
+</html>
