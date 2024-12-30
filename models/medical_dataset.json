@@ -1,0 +1,84 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hello",
+                "Good day",
+                "Hey there",
+                "How are you"
+            ],
+            "responses": [
+                "Hello! I'm Nurse Lina Mae, how can I help you today?",
+                "Hi there! This is Nurse Lina Mae. What medical concerns can I address for you?",
+                "Good day! I'm Nurse Lina Mae. How may I assist you with your health questions?"
+            ]
+        },
+        {
+            "tag": "blood_pressure",
+            "patterns": [
+                "What is normal blood pressure?",
+                "Is my blood pressure too high?",
+                "Blood pressure guidelines",
+                "What should my BP be?"
+            ],
+            "responses": [
+                "Normal blood pressure is generally considered to be below 120/80 mmHg. If you're concerned about your readings, please consult your healthcare provider.",
+                "A healthy blood pressure range is typically between 90/60 mmHg and 120/80 mmHg. Regular monitoring is important for your health."
+            ]
+        },
+        {
+            "tag": "hydration",
+            "patterns": [
+                "How much water should I drink?",
+                "Signs of dehydration",
+                "Daily water intake",
+                "Am I drinking enough water?"
+            ],
+            "responses": [
+                "It's recommended to drink about 8 glasses (2 liters) of water daily. Remember to increase intake during exercise or hot weather.",
+                "Watch for signs of dehydration like dark urine, thirst, dry mouth, and fatigue. Most adults need 2-3 liters of water daily."
+            ]
+        },
+        {
+            "tag": "exercise",
+            "patterns": [
+                "How often should I exercise?",
+                "Best exercises for beginners",
+                "Physical activity guidelines",
+                "Exercise recommendations"
+            ],
+            "responses": [
+                "Adults should aim for at least 150 minutes of moderate aerobic activity or 75 minutes of vigorous activity weekly, plus strength training twice a week.",
+                "Start with 30 minutes of moderate exercise most days. This could include brisk walking, swimming, or cycling. Always consult your doctor before starting a new exercise routine."
+            ]
+        },
+        {
+            "tag": "sleep",
+            "patterns": [
+                "How much sleep do I need?",
+                "Tips for better sleep",
+                "Insomnia help",
+                "Sleep hygiene"
+            ],
+            "responses": [
+                "Adults typically need 7-9 hours of sleep per night. Maintain a regular sleep schedule and create a relaxing bedtime routine.",
+                "For quality sleep, keep your bedroom cool and dark, avoid screens before bedtime, and try to go to bed at the same time each night."
+            ]
+        },
+        {
+            "tag": "nutrition",
+            "patterns": [
+                "Healthy diet tips",
+                "What should I eat?",
+                "Balanced meal advice",
+                "Nutrition guidelines"
+            ],
+            "responses": [
+                "Focus on a balanced diet with plenty of fruits, vegetables, whole grains, lean proteins, and healthy fats. Limit processed foods and added sugars.",
+                "Try to eat a rainbow of vegetables daily, choose whole grains over refined ones, and include protein with each meal. Stay hydrated and watch portion sizes."
+            ]
+        }
+    ]
+}
